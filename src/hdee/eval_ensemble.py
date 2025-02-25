@@ -118,7 +118,8 @@ def main(cfg: DictConfig) -> None:
     torch.set_default_device(device)
     torch.cuda.set_device(local_rank)
 
-    log_dir = os.path.join(cfg.log_dir, cfg.exp_name)
+    loc_dir = Path(__file__).parents[3]
+    log_dir = os.path.join(loc_dir, cfg.log_dir, cfg.exp_name)
 
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
@@ -142,7 +143,7 @@ def main(cfg: DictConfig) -> None:
         logger.info(f"Using communication backend: {backend}.")
     dist.barrier()
 
-    tb_root_path = os.path.join(cfg.log_dir, "tensorboard")
+    tb_root_path = os.path.join(loc_dir, cfg.log_dir, "tensorboard")
     tb_log_path = os.path.join(tb_root_path, cfg.exp_name)
     
     if rank == 0:
@@ -157,7 +158,7 @@ def main(cfg: DictConfig) -> None:
     
     validation_data_loaders = {
         key: torch.utils.data.DataLoader(
-            instantiate(value), batch_size=cfg.batch_size, num_workers=1
+        instantiate({'_target_': value._target_, 'path': os.path.join(loc_dir,value.path)}), batch_size=cfg.batch_size, num_workers=0
         )
         for key, value in cfg.validation_data_loaders.items()
     }
@@ -165,7 +166,8 @@ def main(cfg: DictConfig) -> None:
     #Load trained ELMs and get mapping from model to domain
     ensemble_models, model_to_domain_mapping, domain_to_model_mapping = {}, {}, {}
     for model_name, model_config in cfg.models.items():
-        ensemble_models[model_name] = torch.load(model_config.model_dir, weights_only=False)
+        model_dir = os.path.join(loc_dir, model_config.model_dir)
+        ensemble_models[model_name] = torch.load(model_dir, weights_only=False)
         ensemble_models[model_name].eval()
         #TODO: Can remove these dicts since not currently used, but leaving in case we want these for logging/visualization purposes.
         try:

@@ -7,5 +7,5 @@ defaults:
 exp_name: train_iter1_expert_l_domain_math_l1
 
 model:
-  model_dir: /home/gensyn/workdir/hdee/experiments/seed_models/train_seed_expert_l/checkpoints/model_20000.bin
+  model_dir: hdee/experiments/seed_models/train_seed_expert_l/checkpoints/model_20000.bin
 

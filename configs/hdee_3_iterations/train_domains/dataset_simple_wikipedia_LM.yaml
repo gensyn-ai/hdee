@@ -3,9 +3,9 @@ defaults:
 
 train_data_loader:
   _target_: data_loaders.ShardedDataset
-  path: /home/gensyn/workdir/hdee/dataset/simple_wikipedia_LM/train/*.parquet
+  path: hdee/dataset/simple_wikipedia_LM/train/*.parquet
 
 validation_data_loaders:
   dev:
     _target_: data_loaders.ShardedDataset
-    path: /home/gensyn/workdir/hdee/dataset/simple_wikipedia_LM/validation/*.parquet
+    path: hdee/dataset/simple_wikipedia_LM/validation/*.parquet

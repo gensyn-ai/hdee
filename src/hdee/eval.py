@@ -49,7 +49,8 @@ def main(cfg: DictConfig) -> None:
     torch.set_default_device(device)
     torch.cuda.set_device(local_rank)
 
-    log_dir = os.path.join(cfg.log_dir, cfg.exp_name)
+    loc_dir = Path(__file__).parents[3]
+    log_dir = os.path.join(loc_dir, cfg.log_dir, cfg.exp_name)
 
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
@@ -73,7 +74,7 @@ def main(cfg: DictConfig) -> None:
         logger.info(f"Using communication backend: {backend}.")
     dist.barrier()
 
-    tb_root_path = os.path.join(cfg.log_dir, "tensorboard")
+    tb_root_path = os.path.join(loc_dir, cfg.log_dir, "tensorboard")
     tb_log_path = os.path.join(tb_root_path, cfg.exp_name)
     
     if rank == 0:
@@ -88,12 +89,13 @@ def main(cfg: DictConfig) -> None:
     
     validation_data_loaders = {
         key: torch.utils.data.DataLoader(
-            instantiate(value), batch_size=cfg.batch_size, num_workers=1
+        instantiate({'_target_': value._target_, 'path': os.path.join(loc_dir,value.path)}), batch_size=cfg.batch_size, num_workers=0
         )
         for key, value in cfg.validation_data_loaders.items()
     }
     
-    model = torch.load(cfg.model.model_dir, weights_only=False)
+    model_dir = os.path.join(loc_dir, cfg.model.model_dir)
+    model = torch.load(model_dir, weights_only=False).to(device=device)
     model.eval()
 
     eval_steps = cfg.eval_steps

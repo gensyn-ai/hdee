@@ -6,16 +6,16 @@ eval_steps: 1000
 evalulation_interval: 1000
 gradient_accumulation: 2
 batch_size: 42
-log_dir: /home/gensyn/workdir/hdee/experiments/seed_models
+log_dir: hdee/experiments/seed_models
 
 train_data_loader:
   _target_: data_loaders.ShardedDataset
-  path: /home/gensyn/workdir/hdee/dataset/openwebtext/train/*.parquet
+  path: hdee/dataset/openwebtext/train/*.parquet
 
 validation_data_loaders:
   dev:
     _target_: data_loaders.ShardedDataset
-    path: /home/gensyn/workdir/hdee/dataset/openwebtext/validation/*.parquet
+    path: hdee/dataset/openwebtext/validation/*.parquet
 
 weight_strategy:
   _target_: weight_strategies.UniformStrategyBuilder

@@ -1,11 +1,12 @@
 [project]
-name = "hbtm"
+name = "hdee"
 version = "0.1.0"
 description = "Default template for PDM package"
 authors = [
     { name = "Gensyn Administrator", email = "admin@gensyn.ai" },
     {name = "Oguzhan Ersoy", email = "oguzer2006@gmail.com"},
     {name = "", email = "oguzhan@gensyn.ai"},
+    {name = "", email = ""},
 ]
 dependencies = [
     "numpy>=1.24.4",

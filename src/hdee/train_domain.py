@@ -10,6 +10,7 @@ from omegaconf import DictConfig, OmegaConf
 from torch.utils.tensorboard import SummaryWriter
 import sys
 from pathlib import Path
+import pdb
 
 def loss_fn(labels, logits, reduction="mean"):
     vocab_size = logits.shape[-1]
@@ -47,7 +48,8 @@ def main(cfg: DictConfig) -> None:
     torch.set_default_device(device)
     torch.cuda.set_device(local_rank)
 
-    log_dir = os.path.join(cfg.log_dir, cfg.exp_name)
+    loc_dir = Path(__file__).parents[3]
+    log_dir = os.path.join(loc_dir, cfg.log_dir, cfg.exp_name)
 
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
@@ -71,7 +73,7 @@ def main(cfg: DictConfig) -> None:
         logger.info(f"Using communication backend: {backend}.")
     dist.barrier()
 
-    tb_root_path = os.path.join(cfg.log_dir, "tensorboard")
+    tb_root_path = os.path.join(loc_dir, cfg.log_dir, "tensorboard")
     tb_log_path = os.path.join(tb_root_path, cfg.exp_name)
     checkpoint_path = os.path.join(log_dir, "checkpoints")
     if rank == 0:
@@ -84,19 +86,21 @@ def main(cfg: DictConfig) -> None:
             os.mkdir(checkpoint_path)
 
     writer = SummaryWriter(log_dir=tb_log_path) if rank == 0 else None
-
+    
     train_data_loader = torch.utils.data.DataLoader(
-        instantiate(cfg.train_data_loader), batch_size=cfg.batch_size, num_workers=0
+        instantiate({'_target_': cfg.train_data_loader._target_, 'path': os.path.join(loc_dir,cfg.train_data_loader.path)}), batch_size=cfg.batch_size, num_workers=0
     )
     validation_data_loaders = {
         key: torch.utils.data.DataLoader(
-            instantiate(value), batch_size=cfg.batch_size, num_workers=0
+        instantiate({'_target_': value._target_, 'path': os.path.join(loc_dir,value.path)}), batch_size=cfg.batch_size, num_workers=0
         )
         for key, value in cfg.validation_data_loaders.items()
     }
 
     
-    model = torch.load(cfg.model.model_dir, weights_only=False).to(device=device)
+
+    model_dir = os.path.join(loc_dir, cfg.model.model_dir)
+    model = torch.load(model_dir, weights_only=False).to(device=device)
     
     weight_strategy_builder = instantiate(cfg.weight_strategy)
     weight_strategy = weight_strategy_builder.build(model, device)
@@ -124,6 +128,7 @@ def main(cfg: DictConfig) -> None:
 
     while step < num_steps:
         for batch in train_data_loader:
+            
             tick = time.monotonic()
             input_ids = batch["input_ids"].to(device=device)
             labels = batch["label"].to(device=device)

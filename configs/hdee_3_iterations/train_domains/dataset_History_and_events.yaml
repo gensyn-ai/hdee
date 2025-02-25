@@ -3,9 +3,9 @@ defaults:
 
 train_data_loader:
   _target_: data_loaders.ShardedDataset
-  path: /home/gensyn/workdir/hdee/dataset/History_and_events/train/*.parquet
+  path: hdee/dataset/History_and_events/train/*.parquet
 
 validation_data_loaders:
   dev:
     _target_: data_loaders.ShardedDataset
-    path: /home/gensyn/workdir/hdee/dataset/History_and_events/validation/*.parquet
+    path: hdee/dataset/History_and_events/validation/*.parquet

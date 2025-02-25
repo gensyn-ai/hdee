@@ -2,6 +2,12 @@
 
 ROOT=$(dirname "$(pwd)")
 
+if [ ! -d "$ROOT/hdee/experiments/" ]; then
+    mkdir $ROOT/hdee/experiments/;
+fi;
+
+mkdir $ROOT/hdee/experiments/hdee_3_iterations
+
 for config in "train_iter1_expert_l_domain_math_l1.yaml" "train_iter1_expert_m_domain_Caselaw_Access_Project.yaml" "train_iter1_expert_m_domain_History_and_events.yaml" "train_iter1_expert_m_domain_math_l1.yaml" "train_iter1_expert_s_domain_Caselaw_Access_Project.yaml" \
             "train_iter2_MHC_expert_l_domain_physics_l1.yaml" "train_iter2_MHC_expert_m_domain_Human_activites.yaml" "train_iter2_MHC_expert_m_domain_physics_l1.yaml" "train_iter2_MHC_expert_m_domain_simple_wikipedia_LM.yaml" "train_iter2_MHC_expert_s_domain_simple_wikipedia_LM.yaml" \
             "train_iter3_MHC_PHS_expert_l_domain_cs_l1.yaml" "train_iter3_MHC_PHS_expert_m_domain_Philosophy_and_thinking.yaml" "train_iter3_MHC_PHS_expert_m_domain_TinyStories.yaml" "train_iter3_MHC_PHS_expert_m_domain_cs_l1.yaml" "train_iter3_MHC_PHS_expert_s_domain_TinyStories.yaml" \

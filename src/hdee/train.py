@@ -46,7 +46,8 @@ def main(cfg: DictConfig) -> None:
     torch.set_default_device(device)
     torch.cuda.set_device(local_rank)
 
-    log_dir = os.path.join(cfg.log_dir, cfg.exp_name)
+    loc_dir = Path(__file__).parents[3]
+    log_dir = os.path.join(loc_dir, cfg.log_dir, cfg.exp_name)
 
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
@@ -70,7 +71,7 @@ def main(cfg: DictConfig) -> None:
         logger.info(f"Using communication backend: {backend}.")
     dist.barrier()
 
-    tb_root_path = os.path.join(cfg.log_dir, "tensorboard")
+    tb_root_path = os.path.join(loc_dir, cfg.log_dir, "tensorboard")
     tb_log_path = os.path.join(tb_root_path, cfg.exp_name)
     checkpoint_path = os.path.join(log_dir, "checkpoints")
     if rank == 0:
@@ -85,15 +86,14 @@ def main(cfg: DictConfig) -> None:
     writer = SummaryWriter(log_dir=tb_log_path) if rank == 0 else None
 
     train_data_loader = torch.utils.data.DataLoader(
-        instantiate(cfg.train_data_loader), batch_size=cfg.batch_size, num_workers=1
+        instantiate({'_target_': cfg.train_data_loader._target_, 'path': os.path.join(loc_dir,cfg.train_data_loader.path)}), batch_size=cfg.batch_size, num_workers=0
     )
     validation_data_loaders = {
         key: torch.utils.data.DataLoader(
-            instantiate(value), batch_size=cfg.batch_size, num_workers=1
+        instantiate({'_target_': value._target_, 'path': os.path.join(loc_dir,value.path)}), batch_size=cfg.batch_size, num_workers=0
         )
         for key, value in cfg.validation_data_loaders.items()
     }
-
     
     model = instantiate(cfg.model).to(device=device)
     

@@ -3,9 +3,9 @@ defaults:
 
 train_data_loader:
   _target_: data_loaders.ShardedDataset
-  path: /home/gensyn/workdir/hdee/dataset/TinyStories/train/*.parquet
+  path: hdee/dataset/TinyStories/train/*.parquet
 
 validation_data_loaders:
   dev:
     _target_: data_loaders.ShardedDataset
-    path: /home/gensyn/workdir/hdee/dataset/TinyStories/validation/*.parquet
+    path: hdee/dataset/TinyStories/validation/*.parquet

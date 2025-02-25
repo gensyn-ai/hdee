@@ -10,10 +10,10 @@ exp_name: eval_ensemble_mho_ihe_iter3
 
 models:
   model_0:
-    model_dir: /home/gensyn/workdir/hdee/experiments/hdee_3_iterations/train_iter3_MHC_PHS_expert_m_domain_TinyStories/checkpoints/model_300.bin
+    model_dir: hdee/experiments/hdee_3_iterations/train_iter3_MHC_PHS_expert_m_domain_TinyStories/checkpoints/model_300.bin
   model_1:
-    model_dir: /home/gensyn/workdir/hdee/experiments/hdee_3_iterations/train_iter3_MHC_PHS_expert_m_domain_Philosophy_and_thinking/checkpoints/model_400.bin
+    model_dir: hdee/experiments/hdee_3_iterations/train_iter3_MHC_PHS_expert_m_domain_Philosophy_and_thinking/checkpoints/model_400.bin
   model_2:
-    model_dir: /home/gensyn/workdir/hdee/experiments/hdee_3_iterations/train_iter3_MHC_PHS_expert_m_domain_cs_l1/checkpoints/model_500.bin
+    model_dir: hdee/experiments/hdee_3_iterations/train_iter3_MHC_PHS_expert_m_domain_cs_l1/checkpoints/model_500.bin
 
 

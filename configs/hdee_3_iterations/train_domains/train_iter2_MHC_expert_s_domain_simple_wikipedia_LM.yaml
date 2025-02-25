@@ -7,5 +7,5 @@ defaults:
 exp_name: train_iter2_MHC_expert_m_domain_simple_wikipedia_LM
 
 model:
-  model_dir: /home/gensyn/workdir/hdee/experiments/hdee_3_iterations/train_iter1_expert_s_domain_Caselaw_Access_Project/checkpoints/model_400.bin
+  model_dir: hdee/experiments/hdee_3_iterations/train_iter1_expert_s_domain_Caselaw_Access_Project/checkpoints/model_400.bin
 

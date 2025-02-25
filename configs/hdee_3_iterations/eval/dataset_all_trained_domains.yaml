@@ -8,30 +8,30 @@ validation_data_loaders:
   #S2ORC Data Domains
   dataset_math_l1:
     _target_: data_loaders.ShardedDataset
-    path: /home/gensyn/workdir/hdee/dataset/math_l1/test/*.parquet
+    path: hdee/dataset/math_l1/test/*.parquet
   dataset_physics_l1:
     _target_: data_loaders.ShardedDataset
-    path: /home/gensyn/workdir/hdee/dataset/physics_l1/test/*.parquet
+    path: hdee/dataset/physics_l1/test/*.parquet
   dataset_cs_l1:
     _target_: data_loaders.ShardedDataset
-    path: /home/gensyn/workdir/hdee/dataset/cs_l1/test/*.parquet
+    path: hdee/dataset/cs_l1/test/*.parquet
   # Wiki Data Domains
   dataset_History_and_events:
     _target_: data_loaders.ShardedDataset
-    path: /home/gensyn/workdir/hdee/dataset/History_and_events/test/*.parquet
+    path: hdee/dataset/History_and_events/test/*.parquet
   dataset_Human_activites:
     _target_: data_loaders.ShardedDataset
-    path: /home/gensyn/workdir/hdee/dataset/Human_activites/test/*.parquet
+    path: hdee/dataset/Human_activites/test/*.parquet
   dataset_Philosophy_and_thinking:
     _target_: data_loaders.ShardedDataset
-    path: /home/gensyn/workdir/hdee/dataset/Philosophy_and_thinking/test/*.parquet
+    path: hdee/dataset/Philosophy_and_thinking/test/*.parquet
   # Other Datasets
   dataset_Caselaw_Access_Project:
     _target_: data_loaders.ShardedDataset
-    path: /home/gensyn/workdir/hdee/dataset/Caselaw_Access_Project/test/*.parquet
+    path: hdee/dataset/Caselaw_Access_Project/test/*.parquet
   dataset_simple_wikipedia_LM:
     _target_: data_loaders.ShardedDataset
-    path: /home/gensyn/workdir/hdee/dataset/simple_wikipedia_LM/test/*.parquet
+    path: hdee/dataset/simple_wikipedia_LM/test/*.parquet
   dataset_TinyStories:
     _target_: data_loaders.ShardedDataset
-    path: /home/gensyn/workdir/hdee/dataset/TinyStories/test/*.parquet
+    path: hdee/dataset/TinyStories/test/*.parquet
