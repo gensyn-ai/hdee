@@ -6,7 +6,7 @@ if [ ! -d "$ROOT/hdee/experiments/" ]; then
     mkdir $ROOT/hdee/experiments/;
 fi;
 
-mkdir $ROOT/hdee/experiments/hdee_seed_models
+mkdir $ROOT/hdee/experiments/seed_models
 
 for config in "train_seed_expert_s.yaml" "train_seed_expert_m.yaml" "train_seed_expert_l.yaml"; do
  
