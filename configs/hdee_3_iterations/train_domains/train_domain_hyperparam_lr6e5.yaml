@@ -1,0 +1,21 @@
+defaults:
+  - _self_
+
+num_steps: 600
+eval_steps: 50
+evalulation_interval: 50
+gradient_accumulation: 2
+batch_size: 42
+
+weight_strategy:
+  _target_: weight_strategies.UniformStrategyBuilder
+
+optimizer:
+  _target_: data_parallel_optimizer.DataParallelOptimizerBuilder
+  lr: 6e-5
+
+scheduler:
+  _target_: schedulers.CosineWarmupLRBuilder
+  min_lr: 3e-5
+  max_steps: 600
+  warmup_steps: 50

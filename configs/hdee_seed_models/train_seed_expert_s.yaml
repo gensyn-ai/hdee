@@ -1,0 +1,14 @@
+defaults:
+  - _self_
+  - train_seed_hyperparam_small_close_experts
+
+exp_name: train_seed_expert_s
+
+model:
+  _target_: llama.LlamaWrapperWithMLPSize
+  model_dir: /home/gensyn/workdir/hdee/experiments/seed_models/train_seed_expert_s/checkpoints/model_20000.bin
+  hidden_size: 768
+  intermediate_size: 2304
+  num_attention_heads: 12
+  num_hidden_layers: 12
+  attn_implementation: "flash_attention_2"

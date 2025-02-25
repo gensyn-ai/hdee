@@ -1,0 +1,19 @@
+# Model size and learning parameters are inspired from https://github.com/karpathy/llama2.c 
+# and Super Tiny Language Models paper https://arxiv.org/pdf/2405.14159v1
+
+defaults:
+  - _self_
+  - dataset_all_trained_domains
+  - directory 
+
+exp_name: eval_ensemble_mho_ihe_iter3
+
+models:
+  model_0:
+    model_dir: /home/gensyn/workdir/hdee/experiments/hdee_3_iterations/train_iter3_MHC_PHS_expert_m_domain_TinyStories/checkpoints/model_300.bin
+  model_1:
+    model_dir: /home/gensyn/workdir/hdee/experiments/hdee_3_iterations/train_iter3_MHC_PHS_expert_m_domain_Philosophy_and_thinking/checkpoints/model_400.bin
+  model_2:
+    model_dir: /home/gensyn/workdir/hdee/experiments/hdee_3_iterations/train_iter3_MHC_PHS_expert_m_domain_cs_l1/checkpoints/model_500.bin
+
+

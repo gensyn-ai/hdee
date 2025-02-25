@@ -1,0 +1,10 @@
+defaults:
+  - _self_
+  - dataset_Caselaw_Access_Project
+  - train_domain_hyperparam_lr6e5
+  - directory 
+
+exp_name: train_iter1_expert_s_domain_Caselaw_Access_Project
+
+model:
+  model_dir: /home/gensyn/workdir/hdee/experiments/seed_models/train_seed_expert_s/checkpoints/model_20000.bin

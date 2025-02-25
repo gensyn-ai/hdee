@@ -1,0 +1,11 @@
+defaults:
+  - _self_
+  - dataset_Human_activites
+  - train_domain_hyperparam_lr6e5
+  - directory 
+  
+exp_name: train_iter2_MHC_expert_m_domain_Human_activites
+
+model:
+  model_dir: /home/gensyn/workdir/hdee/experiments/hdee_3_iterations/train_iter1_expert_m_domain_History_and_events/checkpoints/model_400.bin
+

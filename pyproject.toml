@@ -1,0 +1,84 @@
+[project]
+name = "hbtm"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    { name = "Gensyn Administrator", email = "admin@gensyn.ai" },
+    {name = "Oguzhan Ersoy", email = "oguzer2006@gmail.com"},
+    {name = "", email = "oguzhan@gensyn.ai"},
+]
+dependencies = [
+    "numpy>=1.24.4",
+    "torch==2.4.1",
+    "datasets>=2.17.1",
+    "pyarrow",
+    "hydra-core",
+    "tensorboard",
+    "flash-attn>=2.7.2.post1",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = { text = "MIT" }
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = [
+	"torch==2.4.1",
+	"pytest>=7.4.4",
+	"mypy>=1.8.0",
+	"ruff>=0.1.11",
+	"isort>=5.13.2",
+	"transformers>=4.43",
+	"pyarrow",
+	"hydra-core",
+	"tensorboard",
+	"flash-attn",
+]
+examples = [
+	"torchvision>=0.16.2",
+	"transformers>=4.43",
+	"peft>=0.12.0",
+	"evaluate>=0.4.2",
+]
+build = [
+	"maturin>=1.4.0",
+	"pip>=23.3.2",
+]
+
+[tool.pdm.scripts]
+static = "mypy ."
+isort = "isort ."
+lint = "ruff check"
+format = "ruff format"
+unit = "pytest tests/unit"
+# `pdm run all` is a quick way to run all these checks
+all = { composite = [ "static", "lint", "format", "isort", "unit" ] }
+
+[tool.pytest.ini_options]
+log_level = "DEBUG"
+log_format = "%(asctime)s %(levelname)-.1s (%(filename)s:%(lineno)s) %(message)s"
+log_date_format = "%Y-%m-%d %H:%M:%S"
+testpaths = [ "./tests/unit/test_profiler.py" ]
+filterwarnings = [ "ignore::DeprecationWarning::", "ignore::UserWarning::" ]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+
+[tool.isort]
+# The profile needs to match `black` or else `ruff` may disagree.
+#
+# Also see https://github.com/PyCQA/isort/issues/1518
+profile = "black"
+known_first_party = [ "gensyn" ]
+
+[tool.ruff.lint]
+# extra rules to add on top of the default ruff rule set.
+extend-select = [ "ARG001" ]
+
+[tool.ruff.lint.per-file-ignores]
+# Ignore unused imports in all `__init__.py` files
+"__init__.py" = [ "F401" ]
+

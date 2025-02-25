@@ -1,0 +1,11 @@
+defaults:
+  - _self_
+  - dataset_simple_wikipedia_LM
+  - train_domain_hyperparam_lr6e5
+  - directory 
+
+exp_name: train_iter2_MHC_expert_m_domain_simple_wikipedia_LM
+
+model:
+  model_dir: /home/gensyn/workdir/hdee/experiments/hdee_3_iterations/train_iter1_expert_s_domain_Caselaw_Access_Project/checkpoints/model_400.bin
+

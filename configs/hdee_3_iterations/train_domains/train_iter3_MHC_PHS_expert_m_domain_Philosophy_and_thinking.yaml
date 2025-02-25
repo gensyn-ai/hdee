@@ -1,0 +1,11 @@
+defaults:
+  - _self_
+  - dataset_Philosophy_and_thinking
+  - train_domain_hyperparam_lr6e5
+  - directory 
+  
+exp_name: train_iter3_MHC_PHS_expert_m_domain_Philosophy_and_thinking
+
+model:
+  model_dir: /home/gensyn/workdir/hdee/experiments/hdee_3_iterations/train_iter2_MHC_expert_m_domain_Human_activites/checkpoints/model_400.bin
+

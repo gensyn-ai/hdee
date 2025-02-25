@@ -1,0 +1,11 @@
+defaults:
+  - _self_
+  - dataset_physics_l1
+  - train_domain_hyperparam_lr6e5
+  - directory 
+
+exp_name: train_iter2_MHC_expert_l_domain_physics_l1
+
+model:
+  model_dir: /home/gensyn/workdir/hdee/experiments/hdee_3_iterations/train_iter1_expert_l_domain_math_l1/checkpoints/model_400.bin
+

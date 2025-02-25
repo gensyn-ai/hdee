@@ -1,0 +1,11 @@
+defaults:
+  - _self_
+
+log_dir: /home/gensyn/workdir/hdee/experiments/hdee_3_iterations
+
+
+
+
+
+
+
