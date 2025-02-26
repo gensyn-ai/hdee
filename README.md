@@ -10,7 +10,7 @@ python -m pdm init
 python -m pdm install
 ```
 
-In case of receiving error regarding flash attention, run `pdm run pip install flash-attn --no-build-isolation`.
+In case of receiving an error regarding flash attention, run `pdm run pip install flash-attn --no-build-isolation`.
 
 ## Running Experiments
 To run an example HDEE setting given in the paper, follow the instructions given below.
@@ -19,8 +19,10 @@ The training run details are captured by hydra configs that are stored in the `/
 
 The example scripts can be found in `/scripts` folder.
 
+The experimental results are store in `/experiments` folder.
+
 ### Loading Datasets
-To load datasets, make sure to replace <TOKEN_NAME> and <TOKEN> with your own HF token in the corresponding scripts.
+To load datasets, make sure to replace `<TOKEN_NAME>` and `<TOKEN>` with your own HF token in the corresponding scripts.
 
 To load and pretokenize OpenWebText dataset used to train the seed models, run the following script:
 ```commandline
@@ -53,7 +55,7 @@ To train three iterations of the ensembles described in the paper, run script wi
 ./scripts/train_domain_experts.sh
 ```
 
-This script will train three iteration of HDEEs wrt the domains given in the paper. At each iteration, three new domains will be trained over the latest (corresponding) experts. To train with different domains, download the datasets into `/datasets` folder and add the corresponding dataset paths into `/config/hdee_3_iterations/train_domains` folder.
+This script will train three iteration of HDEEs wrt the domains given in the paper. At each iteration, three new domains will be trained over the latest (corresponding) experts. To train with different domains, download the corresponding datasets into `/datasets` folder and add their paths into `/config/hdee_3_iterations/train_domains` folder.
 
 ### Evaluating Ensembles
 To evaluate the final iterations of the ensembles, run script with:
@@ -62,11 +64,11 @@ To evaluate the final iterations of the ensembles, run script with:
 ```
 
 This script will evaluate three ensembles: 
-(i)$\texttt{M}_\texttt{Ho}$-$\texttt{I}_\texttt{Ho}$ (baseline): homogeneous model sizes and an equal number of steps for all models, (ii)$\texttt{M}_\texttt{Ho}$-$\texttt{I}_\texttt{He}$: homogeneous model sizes and unequal number of steps, (iii)$\texttt{M}_\texttt{He}$-$\texttt{I}_\texttt{Ho}$: heterogeneous model sizes and equal number of steps.
+(i)$`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{Ho}`$ (baseline): homogeneous model sizes and an equal number of steps for all models, (ii)$`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{He}`$: homogeneous model sizes and unequal number of steps, (iii)$`\texttt{M}_\texttt{He}`$-$`\texttt{I}_\texttt{Ho}`$: heterogeneous model sizes and equal number of steps.
 
 ## Publication
 ```bibtex
-@article{blagoev2025skippipe,
+@article{ersoy2025hdee,
   title={HDEE: Heterogeneous Domain Expert Ensemble}, 
   author={Ersoy, O\u{g}uzhan and Kolehmainen, Jari and Andrade, Gabriel Passamani},
   year={2025},
