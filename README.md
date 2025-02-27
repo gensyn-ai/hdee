@@ -1,7 +1,8 @@
 # HDEE: Heterogeneous Domain Expert Ensemble
 This repository contains the code and instructions to create HDEEs described in the paper titled ["HDEE: Heterogeneous Domain Expert Ensemble"](https://arxiv.org/abs/2502.19385).
 
-![An iteration of domain training in HDEE. In $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{Ho}`$ all models are the same size and are trained for the same number of steps. In $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{He}`$ all models are the same size, but are trained for more or fewer steps depending on the data domain. In $`\texttt{M}_\texttt{He}`$-$`\texttt{I}_\texttt{Ho}`$ models are different sizes depending on the data domain they will specialize in, but they are all trained for the same number of steps.](assets/hdee.png)
+![HDEE Figure](/assets/hdee.jpg)
+An iteration of BTM-style domain training in HDEE. In $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{Ho}`$ all models are the same size and are trained for the same number of steps. In $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{He}`$ all models are the same size, but are trained for more or fewer steps depending on the data domain. In $`\texttt{M}_\texttt{He}`$-$`\texttt{I}_\texttt{Ho}`$ models are different sizes depending on the data domain they will specialize in, but they are all trained for the same number of steps.
 
 ## Requirements
 Run the following commands to obtain the required packages:
@@ -66,7 +67,7 @@ To evaluate the final iterations of the ensembles, run script with:
 ```
 
 This script will evaluate three ensembles: 
-(i)$`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{Ho}`$ (baseline): homogeneous model sizes and an equal number of steps for all models, (ii)$`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{He}`$: homogeneous model sizes and unequal number of steps, (iii)$`\texttt{M}_\texttt{He}`$-$`\texttt{I}_\texttt{Ho}`$: heterogeneous model sizes and equal number of steps.
+(i) $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{Ho}`$ (baseline): homogeneous model sizes and an equal number of steps for all models, (ii) $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{He}`$: homogeneous model sizes and unequal number of steps, (iii) $`\texttt{M}_\texttt{He}`$-$`\texttt{I}_\texttt{Ho}`$: heterogeneous model sizes and equal number of steps.
 
 ## Publication
 ```bibtex
