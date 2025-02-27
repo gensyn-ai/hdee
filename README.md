@@ -1,5 +1,7 @@
 # HDEE: Heterogeneous Domain Expert Ensemble
-This repository contains the code and instructions to create HDEEs described in the paper titled ["HDEE: Heterogeneous Domain Expert Ensemble"](link).
+This repository contains the code and instructions to create HDEEs described in the paper titled ["HDEE: Heterogeneous Domain Expert Ensemble"](https://arxiv.org/abs/2502.19385).
+
+![An iteration of domain training in HDEE. In $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{Ho}`$ all models are the same size and are trained for the same number of steps. In $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{He}`$ all models are the same size, but are trained for more or fewer steps depending on the data domain. In $`\texttt{M}_\texttt{He}`$-$`\texttt{I}_\texttt{Ho}`$ models are different sizes depending on the data domain they will specialize in, but they are all trained for the same number of steps.](assets/hdee.png)
 
 ## Requirements
 Run the following commands to obtain the required packages:
@@ -72,8 +74,9 @@ This script will evaluate three ensembles:
   title={HDEE: Heterogeneous Domain Expert Ensemble}, 
   author={Ersoy, O\u{g}uzhan and Kolehmainen, Jari and Andrade, Gabriel Passamani},
   year={2025},
-  eprint={ },
+  eprint={2502.19385},
   archivePrefix={arXiv},
-  primaryClass={cs.DC}
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2502.19385},
 }
 ```
