@@ -2,7 +2,7 @@
 This repository contains the code and instructions to create HDEEs described in the paper titled ["HDEE: Heterogeneous Domain Expert Ensemble"](https://arxiv.org/abs/2502.19385).
 
 ![HDEE Figure](/assets/hdee.jpg)
-An iteration of BTM-style domain training in HDEE. In $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{Ho}`$ all models are the same size and are trained for the same number of steps. In $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{He}`$ all models are the same size, but are trained for more or fewer steps depending on the data domain. In $`\texttt{M}_\texttt{He}`$-$`\texttt{I}_\texttt{Ho}`$ models are different sizes depending on the data domain they will specialize in, but they are all trained for the same number of steps.
+*An iteration of BTM-style domain training in HDEE. In $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{Ho}`$ all models are the same size and are trained for the same number of steps. In $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{He}`$ all models are the same size, but are trained for more or fewer steps depending on the data domain. In $`\texttt{M}_\texttt{He}`$-$`\texttt{I}_\texttt{Ho}`$ models are different sizes depending on the data domain they will specialize in, but they are all trained for the same number of steps.*
 
 ## Requirements
 Run the following commands to obtain the required packages:
