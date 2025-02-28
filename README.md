@@ -1,6 +1,8 @@
 # HDEE: Heterogeneous Domain Expert Ensemble
 This repository contains the code and instructions to create HDEEs described in the paper titled ["HDEE: Heterogeneous Domain Expert Ensemble"](https://arxiv.org/abs/2502.19385).
 
+HDEE is a framework for creating Diverse Expert Ensembles, i.e. heterogeneous training of mixture-of-experts models in a parallel fashion. It shows that introducing heterogeneity into the training process yields a better-performing ensemble. Specifically, instead of training all experts with identical configurations, HDEE tailors each expert based on its data domain. For simpler domains, a smaller model (or one trained with fewer iterations) is used; for more challenging domains, larger models and extended training are applied. 
+
 ![HDEE Figure](/assets/hdee.jpg)
 *An iteration of BTM-style domain training in HDEE. In $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{Ho}`$ all models are the same size and are trained for the same number of steps. In $`\texttt{M}_\texttt{Ho}`$-$`\texttt{I}_\texttt{He}`$ all models are the same size, but are trained for more or fewer steps depending on the data domain. In $`\texttt{M}_\texttt{He}`$-$`\texttt{I}_\texttt{Ho}`$ models are different sizes depending on the data domain they will specialize in, but they are all trained for the same number of steps.*
 
